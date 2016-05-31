@@ -1,4 +1,5 @@
 import React from 'react';
+var moment = require('moment');
 var TodoList = require('./TodoList');
 var AddTodo = require('./AddTodo');
 var TodoSearch = require('./TodoSearch');
@@ -23,7 +24,9 @@ var TodoApp = React.createClass({
         {
           id: uuid(),
           text: text,
-          completed: false
+          completed: false,
+          createdAt: moment().unix(),
+          completedAt: undefined
         }
       ]
     });
@@ -39,6 +42,7 @@ var TodoApp = React.createClass({
 
       if (todo.id === id) {
         todo.completed = !todo.completed;
+        todo.completedAt = todo.completed ? moment().unix() : undefined;
       }
       return todo;
     });
@@ -53,12 +57,19 @@ var TodoApp = React.createClass({
 
     return (
       <div>
-        <TodoSearch
-          onSearch={this.handleSearch}/>
-        <TodoList
-          todos={filterTodos}
-          onToggle={this.handleToggle}/>
-        <AddTodo onAddTodo={this.handleAddTodo}/>
+        <h1 className="page-title">Todo App</h1>
+        <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
+            <div className="container">
+              <TodoSearch
+                onSearch={this.handleSearch}/>
+              <TodoList
+                todos={filterTodos}
+                onToggle={this.handleToggle}/>
+              <AddTodo onAddTodo={this.handleAddTodo}/>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
