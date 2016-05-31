@@ -13,7 +13,8 @@ var TodoList = React.createClass({
         return (
           <TodoItem
             {...todo}
-            key={todo.id}/>
+            key={todo.id}
+            onToggle={this.props.onToggle}/>
           );
       });
     };
