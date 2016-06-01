@@ -6,8 +6,16 @@ var TodoApp = require('./components/TodoApp');
 
 var store = require('./store/configureStore').configure();
 var actions = require('./actions/actions');
+var TodoAPI = require('./api/TodoAPI');
 
-store.dispatch(actions.addTodo('CLean the yeard'));
+store.subscribe( () => {
+  var state = store.getState();
+
+  TodoAPI.setTodos(state.todos);
+})
+
+var initialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(initialTodos));
 
 console.log(store)
 // Load foundation
