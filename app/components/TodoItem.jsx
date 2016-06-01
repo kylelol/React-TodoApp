@@ -28,12 +28,12 @@ var TodoItem = React.createClass({
           <input type="checkbox" ref="todoCheckbox" checked={completed} />
         </div>
         <div>
-        <p>
-          {text}
-        </p>
-        <p className="todo__subtext">
-          {renderDate()}
-        </p>
+          <p>
+            {text}
+          </p>
+          <p className="todo__subtext">
+            {renderDate()}
+          </p>
       </div>
 
       </div>
