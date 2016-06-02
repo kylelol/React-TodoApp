@@ -69,3 +69,20 @@ export var addTodos = (todos) => {
     todos
   }
 }
+
+export var startAddTodos = () => {
+  return (dispatch, getState) => {
+    var todosRef = firebaseRef.child('todos');
+
+    return todosRef.once('value').then( (snapshot) => {
+      const keys = Object.keys(snapshot.val());
+      const todos = keys.map((key) => {
+        return {
+          id: key,
+          ...snapshot.val()[key]
+        }
+      })
+      dispatch(addTodos(todos));
+    });
+  }
+}
