@@ -24,7 +24,7 @@ export var TodoItem = React.createClass({
     return (
       <div onClick={() => {
           //this.props.onToggle(id);
-          dispatch(actions.toggleTodo(id))
+          dispatch(actions.startToggleTodo(id, !completed))
         }}
         className={todoClassName}>
         <div>
@@ -38,7 +38,6 @@ export var TodoItem = React.createClass({
             {renderDate()}
           </p>
       </div>
-
       </div>
     );
   }

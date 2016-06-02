@@ -18,13 +18,37 @@
   }
 }
 
+.todo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.todo-row__delete {
+  display: flex;
+  cursor: pointer;
+  background: #fff;
+  transition: background .3s ease;
+}
+
+
 .todo__subtext {
   color: #999;
+}
+
+.todo_delete {
+  display: none;
 }
 
 .todo-completed {
   p, .todo-subtext {
     color: $light-color;
     text-decoration: line-through;
+  }
+  .todo_delete {
+    display: flex;
+    align-self: center;
+    margin-left: 1rem;
+    float: right;
   }
 }

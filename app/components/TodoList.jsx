@@ -29,9 +29,14 @@ export var TodoList = React.createClass({
       } else {
         return filteredTodos.map((todo) => {
           return (
-            <TodoItem
-              {...todo}
-              key={todo.id} />
+            <div className="todo-row">
+              <TodoItem
+                {...todo}
+                key={todo.id} />
+              <div className="todo-row__delete">
+                <button>Delete todo</button>
+              </div>
+            </div>
             );
           });
       }
