@@ -19,6 +19,20 @@ export var showCompletedReduer = (state = false, action) => {
   };
 };
 
+export var authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        ...state,
+          uid: action.uid
+      }
+    case 'LOGOUT':
+      return {};
+    default:
+      return state
+  }
+}
+
 export var todosReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -42,6 +56,8 @@ export var todosReducer = (state = [], action) => {
         ...state,
         ...action.todos
       ];
+    case 'LOGOUT':
+      return [];
     default:
       return state;
   }
